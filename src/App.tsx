@@ -1,11 +1,12 @@
 import { useState, type FC } from 'react';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
+import type { Todo } from './types';
 
 const App: FC = () => {
-  const [todos, setTodos] = useState(['First todo']);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  const createTodo = (todo: string) => {
+  const createTodo = (todo: Todo) => {
     setTodos([...todos, todo]);
   };
 

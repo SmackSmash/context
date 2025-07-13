@@ -1,16 +1,18 @@
 import { useState, type FC, type FormEvent } from 'react';
+import { v4 as uuid } from 'uuid';
+import type { Todo } from '../types';
 
-const AddTodo: FC<{ createTodo: (todo: string) => void }> = ({ createTodo }) => {
+const AddTodo: FC<{ createTodo: (todo: Todo) => void }> = ({ createTodo }) => {
   const [todo, setTodo] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createTodo(todo);
+    createTodo({ id: uuid(), todo });
     setTodo('');
   };
 
   return (
-    <form className='flex' onSubmit={e => handleSubmit(e)}>
+    <form className='mt-4 flex' onSubmit={e => handleSubmit(e)}>
       <input
         type='text'
         value={todo}

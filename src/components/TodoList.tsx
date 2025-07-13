@@ -1,13 +1,12 @@
 import type { FC } from 'react';
+import type { Todo } from '../types';
 
-const TodoList: FC<{ todos: string[] }> = ({ todos }) => {
+const TodoList: FC<{ todos: Todo[] }> = ({ todos }) => {
   return (
     <div>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
+      {todos.map(({ id, todo }) => (
+        <div key={id}>{todo}</div>
+      ))}
     </div>
   );
 };
