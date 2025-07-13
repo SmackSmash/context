@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+@layer {
+  body {
+    @apply bg-indigo-950 text-indigo-50;
+  }
+}
