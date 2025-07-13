@@ -1,5 +1,15 @@
-const TodoList = () => {
-  return <div>Todo List</div>;
+import type { FC } from 'react';
+
+const TodoList: FC<{ todos: string[] }> = ({ todos }) => {
+  return (
+    <div>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default TodoList;
