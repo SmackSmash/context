@@ -8,6 +8,11 @@ const App: FC = () => {
 
   const createTodo = (todo: Todo) => {
     setTodos([...todos, todo]);
+    console.log(todos);
+  };
+
+  const editTodo = (todo: Todo) => {
+    setTodos(todos.map(current => (current.id === todo.id ? todo : current)));
   };
 
   const deleteTodo = (id: string) => {
