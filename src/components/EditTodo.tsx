@@ -1,12 +1,25 @@
-import type { FC } from 'react';
+import { useState, type Dispatch, type FC, type FormEvent, type SetStateAction } from 'react';
 import type { Todo } from '../types';
 
-const EditTodo: FC<{ todo: Todo }> = ({ todo }) => {
+const EditTodo: FC<{
+  todo: Todo;
+  setShowEdit: Dispatch<SetStateAction<boolean>>;
+  editTodo: (todo: Todo) => void;
+}> = ({ todo: { id, value }, setShowEdit, editTodo }) => {
+  const [newValue, setNewValue] = useState(value);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    editTodo({ id, value: newValue });
+    setShowEdit(false);
+  };
+
   return (
-    <form className='flex grow pr-2'>
+    <form onSubmit={e => handleSubmit(e)} className='flex grow pr-2'>
       <input
         type='text'
-        value={todo.todo}
+        value={newValue}
+        onChange={e => setNewValue(e.target.value)}
         className='grow rounded-lg bg-indigo-50 px-4 py-2 outline-0'
       />
       <input

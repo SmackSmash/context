@@ -7,7 +7,7 @@ const AddTodo: FC<{ createTodo: (todo: Todo) => void }> = ({ createTodo }) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createTodo({ id: uuid(), todo });
+    createTodo({ id: uuid(), value: todo });
     setTodo('');
   };
 
