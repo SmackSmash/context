@@ -5,7 +5,7 @@ import { TodoContext } from './contexts';
 import type { TodoContextType } from './types';
 
 const App: FC = () => {
-  const { todos, deleteTodo, editTodo, createTodo } = useContext(TodoContext) as TodoContextType;
+  const { todos, deleteTodo, editTodo } = useContext(TodoContext) as TodoContextType;
 
   return (
     <div className='m-4 rounded-xl bg-indigo-900 p-4 font-bold'>
@@ -15,7 +15,7 @@ const App: FC = () => {
       ) : (
         'You have nothing to do'
       )}
-      <AddTodo createTodo={createTodo} />
+      <AddTodo />
     </div>
   );
 };
