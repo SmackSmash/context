@@ -1,22 +1,11 @@
-import { useState, type FC } from 'react';
+import { useContext, type FC } from 'react';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
-import type { Todo } from './types';
+import { TodoContext } from './contexts';
+import type { TodoContextType } from './types';
 
 const App: FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  const createTodo = (todo: Todo) => {
-    setTodos([...todos, todo]);
-  };
-
-  const editTodo = (todo: Todo) => {
-    setTodos(todos.map(current => (current.id === todo.id ? todo : current)));
-  };
-
-  const deleteTodo = (id: string) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
+  const { todos, deleteTodo, editTodo, createTodo } = useContext(TodoContext) as TodoContextType;
 
   return (
     <div className='m-4 rounded-xl bg-indigo-900 p-4 font-bold'>
