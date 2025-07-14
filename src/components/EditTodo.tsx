@@ -9,10 +9,10 @@ import {
 import type { Todo, TodoContextType } from '../types';
 import { TodoContext } from '../contexts';
 
-const EditTodo: FC<{
-  todo: Todo;
-  setShowEdit: Dispatch<SetStateAction<boolean>>;
-}> = ({ todo: { id, value }, setShowEdit }) => {
+const EditTodo: FC<{ todo: Todo; setShowEdit: Dispatch<SetStateAction<boolean>> }> = ({
+  todo: { id, value },
+  setShowEdit
+}) => {
   const [newValue, setNewValue] = useState(value);
 
   const { editTodo } = useContext(TodoContext) as TodoContextType;
