@@ -1,14 +1,16 @@
-import { useState, type FC } from 'react';
-import type { Todo } from '../types';
+import { useContext, useState, type FC } from 'react';
+import type { Todo, TodoContextType } from '../types';
 import EditTodo from './EditTodo';
+import { TodoContext } from '../contexts';
 
 const ShowTodo: FC<{
   todo: Todo;
-  deleteTodo: (id: string) => void;
   editTodo: (todo: Todo) => void;
-}> = ({ todo, deleteTodo, editTodo }) => {
+}> = ({ todo, editTodo }) => {
   const [showControls, setshowControls] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+
+  const { deleteTodo } = useContext(TodoContext) as TodoContextType;
 
   return (
     <div
