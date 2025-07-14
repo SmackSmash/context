@@ -1,12 +1,12 @@
-import { useContext, useState, type FC, type FormEvent } from 'react';
+import { useState, type FC, type FormEvent } from 'react';
 import { v4 as uuid } from 'uuid';
-import { TodoContext } from '../contexts';
 import type { TodoContextType } from '../types';
+import useTodoContext from '../hooks/useTodoContext';
 
 const AddTodo: FC = () => {
   const [todo, setTodo] = useState('');
 
-  const { createTodo } = useContext(TodoContext) as TodoContextType;
+  const { createTodo } = useTodoContext() as TodoContextType;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

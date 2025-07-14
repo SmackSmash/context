@@ -1,13 +1,13 @@
-import { useContext, useState, type FC } from 'react';
+import { useState, type FC } from 'react';
 import type { Todo, TodoContextType } from '../types';
 import EditTodo from './EditTodo';
-import { TodoContext } from '../contexts';
+import useTodoContext from '../hooks/useTodoContext';
 
 const ShowTodo: FC<{ todo: Todo }> = ({ todo }) => {
   const [showControls, setshowControls] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
 
-  const { deleteTodo } = useContext(TodoContext) as TodoContextType;
+  const { deleteTodo } = useTodoContext() as TodoContextType;
 
   return (
     <div

@@ -1,11 +1,11 @@
-import { useContext, type FC } from 'react';
+import { type FC } from 'react';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
-import { TodoContext } from './contexts';
+import useTodoContext from './hooks/useTodoContext';
 import type { TodoContextType } from './types';
 
 const App: FC = () => {
-  const { todos } = useContext(TodoContext) as TodoContextType;
+  const { todos } = useTodoContext() as TodoContextType;
 
   return (
     <div className='m-4 rounded-xl bg-indigo-900 p-4 font-bold'>

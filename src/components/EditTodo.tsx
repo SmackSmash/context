@@ -1,13 +1,6 @@
-import {
-  useContext,
-  useState,
-  type Dispatch,
-  type FC,
-  type FormEvent,
-  type SetStateAction
-} from 'react';
+import { useState, type Dispatch, type FC, type FormEvent, type SetStateAction } from 'react';
 import type { Todo, TodoContextType } from '../types';
-import { TodoContext } from '../contexts';
+import useTodoContext from '../hooks/useTodoContext';
 
 const EditTodo: FC<{ todo: Todo; setShowEdit: Dispatch<SetStateAction<boolean>> }> = ({
   todo: { id, value },
@@ -15,7 +8,7 @@ const EditTodo: FC<{ todo: Todo; setShowEdit: Dispatch<SetStateAction<boolean>> 
 }) => {
   const [newValue, setNewValue] = useState(value);
 
-  const { editTodo } = useContext(TodoContext) as TodoContextType;
+  const { editTodo } = useTodoContext() as TodoContextType;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
