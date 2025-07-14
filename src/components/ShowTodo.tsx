@@ -3,10 +3,7 @@ import type { Todo, TodoContextType } from '../types';
 import EditTodo from './EditTodo';
 import { TodoContext } from '../contexts';
 
-const ShowTodo: FC<{
-  todo: Todo;
-  editTodo: (todo: Todo) => void;
-}> = ({ todo, editTodo }) => {
+const ShowTodo: FC<{ todo: Todo }> = ({ todo }) => {
   const [showControls, setshowControls] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
 
@@ -19,7 +16,7 @@ const ShowTodo: FC<{
       className='flex items-center rounded-lg bg-indigo-300 py-2 pr-2 pl-4 text-indigo-950'
     >
       {showEdit ? (
-        <EditTodo todo={todo} setShowEdit={setShowEdit} editTodo={editTodo} />
+        <EditTodo todo={todo} setShowEdit={setShowEdit} />
       ) : (
         <p className='py-2'>{todo.value}</p>
       )}
